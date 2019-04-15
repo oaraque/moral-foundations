@@ -63,13 +63,13 @@ def read_study1_dataset():
 moral_label = {'fairness': 'FC', 'loyalty': 'LB', 'care': 'CH', 'purity': 'PD', 'authority': 'AS', 'non-moral': 'NM'}
 
 def read_moral_lex():
-    morals = [os.path.splitext(os.path.basename(file))[0] for file in glob('moralstrength/*.csv')]
+    morals = [os.path.splitext(os.path.basename(file))[0] for file in glob('moralstrength/*.tsv')]
 
     moral_df = dict()
     moral_dict = dict()
     
     for moral in morals:
-        df = pd.read_csv("moralstrength/{}.csv".format(moral))
+        df = pd.read_csv("moralstrength/{}.tsv".format(moral), sep='\t')
         moral_df[moral] = df
         moral_dict[moral] = df['LEMMA'].values
     return moral_df, moral_dict
