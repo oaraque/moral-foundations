@@ -3,11 +3,11 @@
 Additionally, this repository contains code and trained models corresponding to the paper "MoralStrength: Exploiting a Moral Lexicon and Embedding Similarity for Moral Foundations Prediction".
 Run `Predictor.ipynb` to see a functioning version of the moral foundations predictor.
 
-# MoralStrenght lexicon
+# MoralStrength lexicon
 
 ## MoralStrength processed lexicon
 
-This repository contains the MoralStrenght lexicon, which enables researchers to extract the moral valence from a variety of lemmas.
+This repository contains the MoralStrength lexicon, which enables researchers to extract the moral valence from a variety of lemmas.
 It is available under the directory `moralstrength`.
 An example of use of the lexicon with Python is:
 
