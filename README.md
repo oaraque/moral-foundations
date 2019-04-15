@@ -3,7 +3,7 @@
 This repository contains the MoralStrenght lexicon, which enables researchers to extract the moral valence from a variety of lemmas.
 An example of use of the lexicon with Python is:
 
-```
+```python
 >>> import lexicon_use
 
 >>> lexicon_use.moral_value(word='care', moral='care')
