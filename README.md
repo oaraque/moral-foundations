@@ -1,3 +1,8 @@
+# Moral Foundations Theory predictor
+
+Additionally, this repository contains code and trained models corresponding to the paper "MoralStrength: Exploiting a Moral Lexicon and Embedding Similarity for Moral Foundations Prediction".
+Run `Predictor.ipynb` to see a functioning version of the moral foundations predictor.
+
 # MoralStrenght lexicon
 
 ## MoralStrength processed lexicon
@@ -37,8 +42,9 @@ The numbers for EXPRESSED_MORAL range from 1 to 9, and the extremes of the scale
 
 For privacy reason, the annotator ID has been salted and hashed, so that going back to the original annotator ID is not possible, but it is still possible to track each annotator's ratings across the different morals.
 
+## MoralStrength annotation task descriptions
 
-# Moral Foundations Theory predictor
+In the folder `moralstrength/tasks` we also include the original description of the annotation tasks for the crowdsourcing process.
+The interested reader can consult the instructions given to the human annotators.
 
-Additionally, this repository contains code and trained models corresponding to the paper "MoralStrength: Exploiting a Moral Lexicon and Embedding Similarity for Moral Foundations Prediction".
-Run `Predictor.ipynb` to see a functioning version of the moral foundations predictor.
+
