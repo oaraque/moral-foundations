@@ -29,7 +29,7 @@ setuptools.setup(
 	 },
 	 install_requires=[
    		'gsitk',
-		'nltk',
+		'spacy',
 		'numpy',
 		'pandas',
 		'scikit-learn>=0.20.0,<0.21.0',

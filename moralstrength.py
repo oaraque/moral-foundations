@@ -1,6 +1,9 @@
 import lexicon_use
 from estimators import estimate,models
+import spacy
+import en_core_web_sm
 
+nlp = en_core_web_sm.load()
 moral_options_lexicon = ['care', 'fairness', 'loyalty', 'authority', 'purity']
 moral_options_predictions = moral_options_lexicon + ['non-moral']
 
@@ -27,6 +30,27 @@ def word_moral_values(word):
        If the word is not in the lexicon of that moral trait, returns -1."""
        
     return {moral: lexicon_use.moral_value(word=word, moral=moral) for moral in moral_options_lexicon}
+
+
+def string_average_moral(text,moral):
+    """Returns the average of the annotations for the words in the sentence (for one moral).
+       If no word is recognized/found in the lexicon, returns -1.
+       Words are lemmatized using spacy.
+       """
+	sum = 0
+	recognized_words_no = 0
+	for token in nlp(text):
+		lemma = token.lemma_
+		value = word_moral_value(lemma,moral)
+		#print("lemma: {}".format(lemma))
+		if value>-1:
+			sum += value
+			recognized_words_no += 1
+	if recognized_words_no == 0:
+		return -1
+	else:
+		return sum/recognized_words_no
+	
 
 
 def get_available_models():
