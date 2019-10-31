@@ -1,9 +1,11 @@
+from icecream import ic
+import os
 import numpy as np
 import pickle
 from sklearn.pipeline import Pipeline
 from gsitk.preprocess import pprocess_twitter, simple, Preprocesser
 
-from lexicon_use import form_text_vector
+from moralstrength.lexicon_use import form_text_vector
 
 moral_options = ('care', 'fairness', 'loyalty', 'authority', 'purity', 'non-moral')
 models = (
@@ -33,7 +35,12 @@ def pck_name(model_name, moral, transformer=False, transformer_name='unigram'):
         return "simon_{}".format(moral)
 
 def load_model(model_name):
-    with open('export/{}.pck'.format(model_name), 'rb') as f:
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    ic(dir_path)
+    model_path = 'export/{}.pck'.format(model_name)
+    full_path = os.path.join(dir_path, model_path)
+    ic(full_path)
+    with open(full_path, 'rb') as f:
         m = pickle.load(f)
     return m
 

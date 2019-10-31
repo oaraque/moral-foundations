@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import data 
+from moralstrength import data 
 
 moral_df, moral_dict = data.read_moral_lex()
 
