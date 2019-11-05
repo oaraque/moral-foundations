@@ -63,7 +63,7 @@ def get_available_models():
        or a combination of these.
        For a comprehensive explanation of what each model does and how it performs on
        different datasets, see https://arxiv.org/abs/1904.08314
-       (currently being reviewed at Expert Systems and Application)."""
+       (published at Knowledge-Based Systems)."""
 
     return models
 
