@@ -15,12 +15,12 @@ def read_dataset():
     tw_train = read_tw_csv('data/twitter/train/shuffled_dataset_LSTM.csv', 'train')
     tw_test = read_tw_csv('data/twitter/test/shuffled_dataset_LSTM.csv', 'test')
     dataset = pd.concat([tw_train, tw_test], axis=0).reset_index()
-    
+
     pp_pipe = Pipeline([
         ('twitter', Preprocesser(pprocess_twitter)),
         ('simple', Preprocesser(simple)),
     ])
-    
+
     dataset['text'] = pp_pipe.fit_transform(dataset['text_raw'])
     return dataset
 
@@ -34,7 +34,7 @@ def read_study1_dataset():
     floats = ['HarmVirtue', 'HarmVice', 'FairnessVirtue', 'FairnessVice','IngroupVirtue', 'IngroupVice',
      'AuthorityVirtue', 'AuthorityVice', 'PurityVirtue', 'PurityVice', 'Morality']
     df[floats] = df[floats].astype(float)
-    
+
     morality_mean = df['Morality'].mean()
 
     morals = ['harm', 'fairness', 'ingroup', 'authority', 'purity']
@@ -48,28 +48,30 @@ def read_study1_dataset():
     df['text_raw'] = df['Tweet']
     df['label'] = df['moral']
     dataset = df[['text_raw', 'label']]
-    
+
     pp_pipe = Pipeline([
         ('twitter', Preprocesser(pprocess_twitter)),
         ('simple', Preprocesser(simple)),
     ])
-    
+
     dataset['text'] = pp_pipe.fit_transform(dataset['text_raw'])
     return dataset
-    
+
     return df
 
 ## Read Lexicon
 moral_label = {'fairness': 'FC', 'loyalty': 'LB', 'care': 'CH', 'purity': 'PD', 'authority': 'AS', 'non-moral': 'NM'}
 
 def read_moral_lex():
-    morals = [os.path.splitext(os.path.basename(file))[0] for file in glob('moralstrength_annotations/*.tsv')]
+    annotations_path = os.path.join(os.path.dirname(__file__), 'annotations')
+    morals = [os.path.splitext(os.path.basename(file))[0] for file in glob(os.path.join(annotations_path, '*.tsv'))]
 
     moral_df = dict()
     moral_dict = dict()
-    
+
     for moral in morals:
-        df = pd.read_csv("moralstrength_annotations/{}.tsv".format(moral), sep='\t')
+        tsv_path = os.path.join(annotations_path, "{}.tsv".format(moral))
+        df = pd.read_csv(tsv_path, sep='\t')
         moral_df[moral] = df
         moral_dict[moral] = df['LEMMA'].values
     return moral_df, moral_dict

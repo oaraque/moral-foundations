@@ -1,6 +1,6 @@
 import setuptools
 
-VERSION = '0.1.0'
+VERSION = '0.1.4'
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -32,9 +32,7 @@ setuptools.setup(
 		'spacy',
 		'numpy',
 		'pandas',
-		'scikit-learn>=0.20.0,<0.21.0',
+		'scikit-learn==0.20.0',
 	],
-	package_data={
-	    'moralstrength': ['export'],
-	},
+    include_package_data=True,
  )

@@ -1,4 +1,3 @@
-from icecream import ic
 import os
 import numpy as np
 import pickle
@@ -36,10 +35,8 @@ def pck_name(model_name, moral, transformer=False, transformer_name='unigram'):
 
 def load_model(model_name):
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    ic(dir_path)
     model_path = 'export/{}.pck'.format(model_name)
     full_path = os.path.join(dir_path, model_path)
-    ic(full_path)
     with open(full_path, 'rb') as f:
         m = pickle.load(f)
     return m
