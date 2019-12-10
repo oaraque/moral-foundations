@@ -1,9 +1,18 @@
+import io
 import setuptools
 
-VERSION = '0.1.4'
+VERSION = '0.1.7'
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
+
+def parse_requirements(filename):
+    """ load requirements from a pip requirements file """
+    with io.open(filename, 'r') as f:
+        lineiter = list(line.strip() for line in f)
+    return [line for line in lineiter if line and not line.startswith("#")]
+
+install_reqs = parse_requirements("requirements.txt")
 
 setuptools.setup(
      name='moralstrength',
@@ -27,12 +36,6 @@ setuptools.setup(
          "Operating System :: OS Independent",
      ],
      keywords=['moral foundations', 'NLP', 'moralstrength', 'machine learning'],
-	 install_requires=[
-   		'gsitk',
-		'spacy',
-		'numpy',
-		'pandas',
-		'scikit-learn==0.20.0',
-	],
+	 install_requires=install_reqs,
     include_package_data=True,
  )

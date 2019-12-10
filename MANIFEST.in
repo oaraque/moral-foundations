@@ -1,2 +1,3 @@
+include requirements.txt
 include moralstrength/export/*
 include moralstrength/annotations/*
