@@ -43,6 +43,9 @@ def string_average_moral(text,moral):
        If no word is recognized/found in the lexicon, returns -1.
        Words are lemmatized using spacy.
        """
+
+    # TODO: add new metric
+
     sum = 0
     recognized_words_no = 0
     for token in nlp(text):
