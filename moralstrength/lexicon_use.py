@@ -10,7 +10,16 @@ for moral, df in moral_df.items():
 
 moral_list = list(moral_lex.keys())
 
-def moral_value(word, moral):
+def moral_value(word, moral, normalized=False):
+    value = __private_moral_value(word,moral)
+    if value==-1:
+        return float('NaN')
+    #annotation is between 1 and 9
+    if normalized:
+        value = (value-1)/8
+    return value
+
+def __private_moral_value(word, moral):
     try:
         v = moral_lex[moral].loc[word]['EXPRESSED_MORAL']
     except KeyError:
@@ -30,7 +39,7 @@ def bucketize(x):
 def form_word_vector(word, bucketize_=None):
     v = []
     for moral in moral_lex.keys():
-        v_m = moral_value(word, moral)
+        v_m = __private_moral_value(word, moral)
         if bucketize_ is not None:
             v_m = bucketize_(v_m)
         v.append(v_m)
