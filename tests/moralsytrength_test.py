@@ -2,7 +2,7 @@ import pytest
 import numpy as np
 
 from moralstrength import (
-    get_available_models, get_available_lexicon_traits, get_available_prediction_traits, string_moral_values, string_moral_value, word_moral_value, word_moral_annotations
+    get_available_models, get_available_lexicon_traits, get_available_prediction_traits, string_moral_values, string_moral_value, word_moral_value, word_moral_annotations, string_vader_moral
 )
 
 
@@ -16,6 +16,11 @@ def check_moral_value(value):
     assert value is not None
     assert isinstance(value, float) or isinstance(value, int)
     assert ((value >= 0) and (value <= 9) ) or np.isnan(value)
+
+def check_moral_polarity(value):
+    assert value is not None
+    assert isinstance(value, float) or isinstance(value, int)
+    assert ((value >= -1) and (value <= 1) ) or np.isnan(value)
 
 def test_get_available_models():
     result = get_available_models()
@@ -75,3 +80,9 @@ def test_word_moral_annotations():
             assert key is not None
             assert isinstance(key, str)
             check_moral_value(value)
+
+
+def test_string_vader_moral():
+    text = "My cat is loyal only to me."
+    for moral_trait in get_available_lexicon_traits():
+        result = string_vader_moral(text, moral_trait)
