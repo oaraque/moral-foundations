@@ -2,7 +2,7 @@ import pytest
 import numpy as np
 
 from moralstrength import (
-    get_available_models, get_available_lexicon_traits, get_available_prediction_traits, string_moral_values, string_moral_value, word_moral_value, word_moral_annotations, string_vader_moral
+    get_available_models, get_available_lexicon_traits, get_available_prediction_traits, string_moral_values, string_moral_value, word_moral_value, word_moral_annotations, string_vader_moral, string_average_moral
 )
 
 
@@ -81,6 +81,11 @@ def test_word_moral_annotations():
             assert isinstance(key, str)
             check_moral_value(value)
 
+def test_string_average_moral():
+    text = "My cat is loyal only to me."
+    for moral_trait in get_available_lexicon_traits():
+        result = string_average_moral(text, moral_trait)
+        
 
 def test_string_vader_moral():
     text = "My cat is loyal only to me."
