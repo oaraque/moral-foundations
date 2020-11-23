@@ -1,10 +1,13 @@
 from moralstrength import lexicon_use
 from moralstrength.estimators import estimate,models
 import math
+import numpy as np
+import pandas as pd
 import spacy
 
 try:
-	nlp = spacy.load("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
+    nlp_reduced = spacy.load("en_core_web_sm", disable=["tagger", "parser", "ner"])
 except OSError as error:
 	if "Can't find model 'en_core_web_sm'" in error.args[0]:
 		print('Downloading files required by the Spacy language processing library (this is only required once)')
@@ -63,6 +66,7 @@ def string_average_moral(text,moral):
     else:
         return sum/recognized_words_no
 
+
 def string_vader_moral(text,moral,alpha=15):
     """Returns a normalized annotation score for the words in the sentence (for one moral).
        Score ranges from -1 (vices) to 1 (virtues) and is calculated as in VADER (Hutto and Gilbert, 2014).
@@ -84,7 +88,60 @@ def string_vader_moral(text,moral,alpha=15):
     else:
         return score/math.sqrt((score*score) + alpha)
 
+def texts_moral(texts, moral, process=False):
+    """Estimates the moral value of the selected moral trait
+       for a list of documents. The list could contain only one
+       document, or many. The process parameter (by default False)
+       controls whether each document is processed with spacy,
+       performing the lemmatization. If no moral value is found,
+       the document is estimated a NaN value. Estimation is done
+       using the lexicon annotations, with no learning whatsoever.
+    """
+    Sums = []
+    if process:
+        docs = list(nlp_reduced.pipe(texts))
+    else:
+        docs = texts
+    for doc in docs:
+        result = None
+        summ = 0
+        recognized_words_no = 0
+        for token in doc:
+            lemma = token.lemma_
+            value = word_moral_value(lemma, moral)
+            if value>-1:
+                summ += value
+                recognized_words_no += 1
+            if recognized_words_no == 0:
+                result = float('NaN')
+            else:
+                result = summ/recognized_words_no
+        Sums.append(result)
 
+    return Sums
+
+def texts_morals(texts):
+    """An useful wrapper for the texts_moral function. Estimates
+       all available moral values for a list of text. Returns a numpy
+       array with 2 dimensions (number of documents x number of moral traits).
+       The order of moral traits is found by executing the method lexicon_morals.
+    """
+    S = []
+    docs = list(nlp_reduced.pipe(texts))
+    for moral in lexicon_morals():
+        sums = texts_moral(docs, moral, process=False)
+        S.append(sums)
+    return np.array(S).T
+
+def estimate_morals(texts):
+    """Wrapper of the texts_morals function. It returns the moral estimation in a
+    Pandas DataFrame, being the columns the morals, and the rows the different documents.
+    This should be the method used analyzing text without using any machine learning. It uses
+    only the annotations of the lexicon.
+    """
+    estimation = texts_morals(texts)
+    estimation = pd.DataFrame(columns=lexicon_morals(), data=estimation)
+    return estimation
 
 
 def get_available_models():
@@ -112,6 +169,13 @@ def get_available_lexicon_traits():
        """
 
     return moral_options_lexicon
+
+def lexicon_morals():
+    """Syntactic sugar call to get_available_lexicon_traits.
+       """
+
+    return get_available_lexicon_traits()
+
 
 def get_available_prediction_traits():
     """Returns a list of traits that can be predicted by string_moral_value()
