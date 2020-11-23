@@ -7,6 +7,7 @@ moral_df, moral_dict = data.read_moral_lex()
 moral_lex = dict()
 for moral, df in moral_df.items():
     moral_lex[moral] = df.set_index('LEMMA')
+    moral_lex[moral] = moral_lex[moral].to_dict()['EXPRESSED_MORAL']
 
 moral_list = list(moral_lex.keys())
 
@@ -20,10 +21,7 @@ def moral_value(word, moral, normalized=False):
     return value
 
 def __private_moral_value(word, moral):
-    try:
-        v = moral_lex[moral].loc[word]['EXPRESSED_MORAL']
-    except KeyError:
-        v = -1
+    v = moral_lex[moral].get(word, -1)
     if isinstance(v, pd.Series):
         return v.values[0]
     return v
