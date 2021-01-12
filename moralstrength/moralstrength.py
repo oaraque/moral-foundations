@@ -1,5 +1,6 @@
 from moralstrength import lexicon_use
 from moralstrength.estimators import estimate,models
+from moralstrength.moral_list import moral_options_lexicon, moral_options_predictions
 import math
 import numpy as np
 import pandas as pd
@@ -13,9 +14,6 @@ except OSError as error:
 		print('Downloading files required by the Spacy language processing library (this is only required once)')
 		spacy.cli.download('en_core_web_sm')
 	nlp = spacy.load("en_core_web_sm")
-
-moral_options_lexicon = ['care', 'fairness', 'loyalty', 'authority', 'purity']
-moral_options_predictions = moral_options_lexicon + ['non-moral']
 
 
 def word_moral_value(word, moral, normalized=False):

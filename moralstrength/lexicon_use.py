@@ -1,18 +1,21 @@
 import numpy as np
 import pandas as pd
 from moralstrength import data 
+from moralstrength.moral_list import moral_options_lexicon
 
-moral_df, moral_dict = data.read_moral_lex()
+moral_lex = data.read_moral_lex('original')
+new_moral_lex = data.read_moral_lex('1.1')
+current_moral_lex = new_moral_lex
 
-moral_lex = dict()
-for moral, df in moral_df.items():
-    moral_lex[moral] = df.set_index('LEMMA')
-    moral_lex[moral] = moral_lex[moral].to_dict()['EXPRESSED_MORAL']
-
-moral_list = list(moral_lex.keys())
+def select_version(version):
+    global current_moral_lex
+    if version == 'original':
+        current_moral_lex = moral_lex
+    elif version == 'latest':
+        current_moral_lex = new_moral_lex
 
 def moral_value(word, moral, normalized=False):
-    value = __private_moral_value(word,moral)
+    value = __private_moral_value(word, moral)
     if value==-1:
         return float('NaN')
     #annotation is between 1 and 9
@@ -36,7 +39,7 @@ def bucketize(x):
     
 def form_word_vector(word, bucketize_=None):
     v = []
-    for moral in moral_lex.keys():
+    for moral in moral_options_lexicon:
         v_m = __private_moral_value(word, moral)
         if bucketize_ is not None:
             v_m = bucketize_(v_m)

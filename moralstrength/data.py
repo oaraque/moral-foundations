@@ -62,8 +62,24 @@ def read_study1_dataset():
 ## Read Lexicon
 moral_label = {'fairness': 'FC', 'loyalty': 'LB', 'care': 'CH', 'purity': 'PD', 'authority': 'AS', 'non-moral': 'NM'}
 
-def read_moral_lex():
-    annotations_path = os.path.join(os.path.dirname(__file__), 'annotations')
+def _read_moral_lex(moral_df, moral_dict, version):
+    moral_lex = dict()
+    for moral, df in moral_df.items():
+        if version == 'original':
+            moral_lex[moral] = df.set_index('LEMMA')
+        else:
+            moral_lex[moral] = df.set_index('WORD')
+        moral_lex[moral] = moral_lex[moral].to_dict()['EXPRESSED_MORAL']
+    return moral_lex
+
+def read_moral_lex(version):
+
+    if version == 'original':
+        folder_path = 'annotations'
+    else:
+        folder_path = 'annotations/v{}'.format(version)
+
+    annotations_path = os.path.join(os.path.dirname(__file__), folder_path)
     morals = [os.path.splitext(os.path.basename(file))[0] for file in glob(os.path.join(annotations_path, '*.tsv'))]
 
     moral_df = dict()
@@ -71,7 +87,13 @@ def read_moral_lex():
 
     for moral in morals:
         tsv_path = os.path.join(annotations_path, "{}.tsv".format(moral))
-        df = pd.read_csv(tsv_path, sep='\t')
+        df = pd.read_csv(tsv_path, sep='\t', index_col=False)
         moral_df[moral] = df
-        moral_dict[moral] = df['LEMMA'].values
-    return moral_df, moral_dict
+        if version == 'original':
+            moral_dict[moral] = df['LEMMA'].values
+        else:
+            moral_dict[moral] = df.index.values
+
+    moral_lex = _read_moral_lex(moral_df, moral_dict, version)
+
+    return moral_lex
