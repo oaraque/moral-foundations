@@ -27,7 +27,7 @@ An example of use of the lexicon with Python is:
 ```python
 >>> import moralstrength
 
->>> moralstrength.word_moral_values('care')
+>>> moralstrength.word_moral_annotations('care')
 {'care': 8.8, 'fairness': -1, 'loyalty': -1, 'authority': -1, 'purity': -1}
 ```
 

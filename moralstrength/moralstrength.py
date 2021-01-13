@@ -10,10 +10,11 @@ try:
     nlp = spacy.load("en_core_web_sm")
     nlp_reduced = spacy.load("en_core_web_sm", disable=["tagger", "parser", "ner"])
 except OSError as error:
-	if "Can't find model 'en_core_web_sm'" in error.args[0]:
-		print('Downloading files required by the Spacy language processing library (this is only required once)')
-		spacy.cli.download('en_core_web_sm')
-	nlp = spacy.load("en_core_web_sm")
+    if "Can't find model 'en_core_web_sm'" in error.args[0]:
+        print('Downloading files required by the Spacy language processing library (this is only required once)')
+        spacy.cli.download('en_core_web_sm')
+    nlp = spacy.load("en_core_web_sm")
+    nlp_reduced = spacy.load("en_core_web_sm", disable=["tagger", "parser", "ner"])
 
 
 def word_moral_value(word, moral, normalized=False):
