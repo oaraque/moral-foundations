@@ -45,9 +45,79 @@ text = "PLS help #HASHTAG's family. No one prepares for this. They are in need o
 moralstrength.string_moral_value(text, moral='care')
 ```
          
-You can check the available moral traits using the `moralstrength.get_available_prediction_traits` method.
+You can check the available moral traits using the `moralstrength.lexicon_morals` method.
 The complete list of methods that can be used is shown in the next section.
-         
+        
+## Unsupervised prediction text using MoralStrength
+
+This package offers a function to perform unsupervised prediction over a list of texts, giving the prediction in a organized fashion.
+For example:
+
+```python
+from moralstrength.moralstrength import estimate_morals
+
+texts = '''My dog is very loyal to me.
+My cat is not loyal, but understands my authority.
+He did not want to break the router, he was fixing it.
+It is not fair! She cheated on the exams.
+Are you pure of heart? Because I am sure not.
+Will you take care of me? I am sad.'''
+
+texts = texts.split('\n')
+
+result = estimate_morals(texts)
+print(result)
+```
+
+The result of this short script would be as follows.
+The estimation is given in a [pandas.DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) format.
+```
+   care  fairness  loyalty  authority  purity
+0   NaN       NaN    8.875     5.1250     NaN
+1   NaN       NaN    8.875     6.9625     NaN
+2   NaN       NaN      NaN        NaN     NaN
+3   NaN       9.0      NaN        NaN     NaN
+4   NaN       NaN      NaN        NaN     9.0
+5   8.8       NaN      NaN        NaN     NaN
+
+```
+
+## Changing lexicon version
+
+The original version of the MoralStrength lexicon is described here:
+
+```
+Oscar Araque, Lorenzo Gatti, Kyriaki Kalimeri,
+MoralStrength: Exploiting a moral lexicon and embedding similarity for moral foundations prediction,
+Knowledge-Based Systems,
+Volume 191,
+2020,
+105184,
+ISSN 0950-7051,
+https://doi.org/10.1016/j.knosys.2019.105184.
+(http://www.sciencedirect.com/science/article/pii/S095070511930526X)
+```
+
+which is also open in arXiv [https://arxiv.org/abs/1904.08314](https://arxiv.org/abs/1904.08314).
+
+A new improved version of the lexicon can be used to predict moral values.
+By default, the software uses the last version.
+to use the original version, you can do:
+
+```
+from moralstrength import lexicon_use
+
+lexicon_use.select_version("original")
+# predict here moral values using the original MoralStrength
+```
+
+If at any moment you want to use the new version of the lexicon again, just do:
+
+```python
+lexicon_use.select_version("latest")
+```
+
+        
 ## List of methods to use
 
 The methods that are under `moralstrength.moralstrength` are the following:
