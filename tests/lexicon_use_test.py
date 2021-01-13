@@ -16,7 +16,6 @@ def test_select_version():
     lexicon_use.select_version('original')
     assert original_sizes == _check_lexicon_size(lexicon_use.current_moral_lex)
 
-
     # change back to latest version
     lexicon_use.select_version('latest')
     assert new_sizes == _check_lexicon_size(lexicon_use.current_moral_lex)
