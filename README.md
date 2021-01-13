@@ -104,7 +104,7 @@ A new improved version of the lexicon can be used to predict moral values.
 By default, the software uses the last version.
 to use the original version, you can do:
 
-```
+```python
 from moralstrength import lexicon_use
 
 lexicon_use.select_version("original")
