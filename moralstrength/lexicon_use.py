@@ -24,7 +24,7 @@ def moral_value(word, moral, normalized=False):
     return value
 
 def __private_moral_value(word, moral):
-    v = moral_lex[moral].get(word, -1)
+    v = current_moral_lex[moral].get(word, -1)
     if isinstance(v, pd.Series):
         return v.values[0]
     return v
