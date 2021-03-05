@@ -1,7 +1,37 @@
 # Moral Foundations Theory predictor and lexicon
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Moral Foundations Theory predictor and lexicon](#moral-foundations-theory-predictor-and-lexicon)
+    - [NEW! Liberty lexicon](#new-liberty-lexicon)
+    - [Install](#install)
+    - [GUI](#gui)
+- [MoralStrength lexicon](#moralstrength-lexicon)
+    - [MoralStrength processed lexicon](#moralstrength-processed-lexicon)
+    - [MoralStrength presence](#moralstrength-presence)
+    - [Unsupervised prediction text using MoralStrength](#unsupervised-prediction-text-using-moralstrength)
+    - [Changing lexicon version](#changing-lexicon-version)
+    - [List of methods to use](#list-of-methods-to-use)
+    - [MoralStrength raw lexicon](#moralstrength-raw-lexicon)
+    - [MoralStrength annotation task descriptions](#moralstrength-annotation-task-descriptions)
+
+<!-- markdown-toc end -->
+
+
 This repository contains code and trained models corresponding to the paper "MoralStrength: Exploiting a Moral Lexicon and Embedding Similarity for Moral Foundations Prediction".
 Run `Predictor.ipynb` to see a functioning version of the moral foundations predictor. Keep reading for some examples of use below.
+
+## NEW! Liberty lexicon
+
+We have generated a new lexicon that contains the *Liberty/oppression* moral foundation.
+To access the lexicon, see the `liberty` folder.
+This lexicon will be updated regularly.
+
+If you use the **liberty lexicon**, please cite the following paper:
+```
+DOI: https://doi.org/10.1145/3442442.3452351
+```
 
 ## Install
 
