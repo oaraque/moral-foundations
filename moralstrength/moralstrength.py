@@ -119,26 +119,29 @@ def texts_moral(texts, moral, process=False):
 
     return Sums
 
-def texts_morals(texts):
+def texts_morals(texts, process=False):
     """An useful wrapper for the texts_moral function. Estimates
        all available moral values for a list of text. Returns a numpy
        array with 2 dimensions (number of documents x number of moral traits).
        The order of moral traits is found by executing the method lexicon_morals.
     """
     S = []
-    docs = list(nlp_reduced.pipe(texts))
+    if process:
+        docs = list(nlp_reduced.pipe(texts))
+    else:
+        docs = texts
     for moral in lexicon_morals():
         sums = texts_moral(docs, moral, process=False)
         S.append(sums)
     return np.array(S).T
 
-def estimate_morals(texts):
+def estimate_morals(texts, process=False):
     """Wrapper of the texts_morals function. It returns the moral estimation in a
     Pandas DataFrame, being the columns the morals, and the rows the different documents.
     This should be the method used analyzing text without using any machine learning. It uses
     only the annotations of the lexicon.
     """
-    estimation = texts_morals(texts)
+    estimation = texts_morals(texts, process=process)
     estimation = pd.DataFrame(columns=lexicon_morals(), data=estimation)
     return estimation
 

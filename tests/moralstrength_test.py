@@ -118,7 +118,7 @@ def test_texts_moral(example_texts):
             check_moral_value(moral_trait_estimation)
 
 def test_texts_morals(example_texts):
-    result = texts_morals(example_texts)
+    result = texts_morals(example_texts, process=True)
     assert isinstance(result, np.ndarray)
     check_estimation_matrix(result, (len(example_texts), len(lexicon_morals())))
     for doc in result:
@@ -126,7 +126,7 @@ def test_texts_morals(example_texts):
             check_moral_value(doc_pred)
 
 def test_estimate_morals(example_texts):
-    result = estimate_morals(example_texts)
+    result = estimate_morals(example_texts, process=True)
     assert isinstance(result, pd.DataFrame)
     check_estimation_matrix(result, (len(example_texts), len(lexicon_morals())))
     for doc in result[lexicon_morals()].values:
