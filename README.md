@@ -95,7 +95,7 @@ Will you take care of me? I am sad.'''
 
 texts = texts.split('\n')
 
-result = estimate_morals(texts)
+result = estimate_morals(texts, process=True) # set to false if text is alredy pre-processed
 print(result)
 ```
 
