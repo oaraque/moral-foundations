@@ -1,0 +1,35 @@
+Wikipedia titles:
+Downloaded from https://dumps.wikimedia.org/enwiki/20210101/
+In particular I used https://dumps.wikimedia.org/enwiki/20210101/enwiki-20210101-all-titles-in-ns0.gz to download all titles in namespace 0 (regular pages, not disambiguation and other stuff)
+
+To remove redirects etc. you need to extract that information from the sql dump of
+https://dumps.wikimedia.org/enwiki/20210101/enwiki-20210101-page.sql.gz
+using extract_titles_from_wikipedia_dump.pl
+
+
+
+Conservapedia titles:
+Downloaded via the API using download_conservapedia_titles.pl
+
+By default downloads *everything*, smart idea to include only namespace 0
+You can add more params to the query:
+  apnamespace         - The namespace to enumerate
+                        One value: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 120, 121, 122, 123, 124, 125, 126, 127, 128,
+                            129, 130, 131
+                        Default: 0
+  apfilterredir       - Which pages to list
+                        One value: all, redirects, nonredirects
+                        Default: all
+                        
+                        
+How to download page content/align
+General process:
+1) download conservapedia titles
+2) download conservapedia pages + filter redirects/disambiguations
+3) extract plaintext from conservapedia 
+4) align wikipedia-conservapedia
+5) download wikipedia pages
+6) extract plaintext from wikipedia
+7) get an aligned id (Page IDs between conservapedia and wikipedia are ofc different)
+Inside the conservapedia and wikipedia folders scripts are numbered in the order they should be executed.
+

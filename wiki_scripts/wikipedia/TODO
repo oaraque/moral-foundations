@@ -1,0 +1,7 @@
+1. read the conservapedia pages
+2. read all the wikipedia titles
+2. look for the title in wikipedia titles;
+		if it doesn't exist, look if a C page has an alternative title (as a Redirection)
+			if yes, save it but in a different list
+			if not, skip
+		if it does, check whether the page is a disambiguation page or a redirection
