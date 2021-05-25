@@ -17,8 +17,8 @@ models = (
 sorter = {'simon': 0, 'unigram': 1, 'count': 2, 'freq': 3}
 
 pp_pipe = Pipeline([
-        ('twitter', Preprocesser(pprocess_twitter)),
-        ('simple', Preprocesser(simple)),
+        ('twitter', Preprocessor(pprocess_twitter)),
+        ('simple', Preprocessor(simple)),
 ])
 
 def generate_model_name(names):

@@ -17,8 +17,8 @@ def read_dataset():
     dataset = pd.concat([tw_train, tw_test], axis=0).reset_index()
 
     pp_pipe = Pipeline([
-        ('twitter', Preprocesser(pprocess_twitter)),
-        ('simple', Preprocesser(simple)),
+        ('twitter', Preprocessor(pprocess_twitter)),
+        ('simple', Preprocessor(simple)),
     ])
 
     dataset['text'] = pp_pipe.fit_transform(dataset['text_raw'])
@@ -50,8 +50,8 @@ def read_study1_dataset():
     dataset = df[['text_raw', 'label']]
 
     pp_pipe = Pipeline([
-        ('twitter', Preprocesser(pprocess_twitter)),
-        ('simple', Preprocesser(simple)),
+        ('twitter', Preprocessor(pprocess_twitter)),
+        ('simple', Preprocessor(simple)),
     ])
 
     dataset['text'] = pp_pipe.fit_transform(dataset['text_raw'])
