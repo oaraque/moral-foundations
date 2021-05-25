@@ -2,7 +2,7 @@ import os
 import numpy as np
 import pickle
 from sklearn.pipeline import Pipeline
-from gsitk.preprocess import pprocess_twitter, simple, Preprocesser
+from gsitk.preprocess import pprocess_twitter, simple, Preprocessor
 
 from moralstrength.lexicon_use import form_text_vector
 

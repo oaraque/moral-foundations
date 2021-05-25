@@ -1,7 +1,7 @@
 import io
 import setuptools
 
-VERSION = '0.2.10'
+VERSION = '0.2.11'
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -25,7 +25,7 @@ setuptools.setup(
      long_description=long_description,
      long_description_content_type="text/markdown",
      url="https://github.com/oaraque/moral-foundations/",
-     download_url='https://github.com/gsi-upm/gsitk/tarball/{}'.format(VERSION),
+    download_url='https://github.com/oaraque/moral-foundations/tarball/{}'.format(VERSION),
      license='LGPLv3',
      classifiers=[
      	 "Intended Audience :: Science/Research",

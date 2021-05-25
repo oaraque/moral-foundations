@@ -2,7 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 from glob import glob
-from gsitk.preprocess import pprocess_twitter, simple, Preprocesser
+from gsitk.preprocess import pprocess_twitter, simple, Preprocessor
 from sklearn.pipeline import Pipeline
 
 ## Read dataset
