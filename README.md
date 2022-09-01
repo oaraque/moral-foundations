@@ -4,7 +4,7 @@
 **Table of Contents**
 
 - [Moral Foundations Theory predictor and lexicon](#moral-foundations-theory-predictor-and-lexicon)
-    - [NEW! Liberty lexicon 2nd version](#new-liberty-lexicon-2nd-version)
+    - [NEW! Liberty lexicon 2nd version - LibertyMFD](#new-liberty-lexicon-2nd-version---libertymfd)
     - [Liberty lexicon 1st version](#liberty-lexicon-1st-version)
     - [Install](#install)
     - [GUI](#gui)
@@ -23,9 +23,9 @@
 This repository contains code and trained models corresponding to the paper "MoralStrength: Exploiting a Moral Lexicon and Embedding Similarity for Moral Foundations Prediction".
 Run `Predictor.ipynb` to see a functioning version of the moral foundations predictor. Keep reading for some examples of use below.
 
-## NEW! Liberty lexicon 2nd version
+## NEW! Liberty lexicon 2nd version - LibertyMFD
 
-On an new work, we have generated two new versions of the *Liberty/oppression* moral foundation lexicon.
+On an new work, we have generated two new versions of the *Liberty/oppression* moral foundation lexicon: the _LibertyMFD_ lexicon.
 The lexicons are accessible in this repository, in the `liberty/2nd_version` folder ([link here](https://github.com/oaraque/moral-foundations/tree/master/liberty/2nd_version)).
 We expect to update this lexicon soon.
 
