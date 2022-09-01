@@ -4,7 +4,8 @@
 **Table of Contents**
 
 - [Moral Foundations Theory predictor and lexicon](#moral-foundations-theory-predictor-and-lexicon)
-    - [NEW! Liberty lexicon](#new-liberty-lexicon)
+    - [NEW! Liberty lexicon 2nd version](#new-liberty-lexicon-2nd-version)
+    - [Liberty lexicon 1st version](#liberty-lexicon-1st-version)
     - [Install](#install)
     - [GUI](#gui)
 - [MoralStrength lexicon](#moralstrength-lexicon)
@@ -22,10 +23,36 @@
 This repository contains code and trained models corresponding to the paper "MoralStrength: Exploiting a Moral Lexicon and Embedding Similarity for Moral Foundations Prediction".
 Run `Predictor.ipynb` to see a functioning version of the moral foundations predictor. Keep reading for some examples of use below.
 
-## NEW! Liberty lexicon
+## NEW! Liberty lexicon 2nd version
+
+On an new work, we have generated two new versions of the *Liberty/oppression* moral foundation lexicon.
+The lexicons are accessible in this repository, in the `liberty/2nd_version` folder ([link here](https://github.com/oaraque/moral-foundations/tree/master/liberty/2nd_version)).
+We expect to update this lexicon soon.
+
+If you use this lexicon, please cite the [following publication](https://doi.org/10.1145/3524458.3547264):
+```
+@inproceedings{10.1145/3524458.3547264,
+author = {Araque, Oscar and Gatti, Lorenzo and Kalimeri, Kyriaki},
+title = {LibertyMFD: A Lexicon to Assess the Moral Foundation of Liberty.},
+year = {2022},
+isbn = {9781450392846},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3524458.3547264},
+doi = {10.1145/3524458.3547264},
+booktitle = {Proceedings of the 2022 ACM Conference on Information Technology for Social Good},
+pages = {154–160},
+numpages = {7},
+keywords = {lexicon, natural language processing, word embeddings, liberty, moral foundations theory, moral values},
+location = {Limassol, Cyprus},
+series = {GoodIT '22}
+}
+```
+
+## Liberty lexicon 1st version
 
 We have generated a new lexicon that contains the *Liberty/oppression* moral foundation.
-To access the lexicon, see the `liberty` folder.
+To access the lexicon, see the `liberty/1st_version` folder ([link here](https://github.com/oaraque/moral-foundations/tree/master/liberty/1st_version)).
 This lexicon will be updated regularly.
 
 If you use the **liberty lexicon**, please cite the following paper:
