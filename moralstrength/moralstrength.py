@@ -217,7 +217,7 @@ def string_moral_values(text,model='unigram+freq'):
     """
 
     if model not in models:
-        raise ValueError('Invalid model "{}" specified. Valid models are: {}'.format(moral,models))
+        raise ValueError('Invalid model "{}" specified. Valid models are: {}'.format(model,models))
     return {moral: estimate(text=text, moral=moral, model=model)[0] for moral in moral_options_predictions}
 
 # def file_moral_value(filename,trait,model):
