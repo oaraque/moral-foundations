@@ -2,4 +2,4 @@ spacy
 pandas
 gsitk
 numpy
-scikit_learn
+scikit_learn==0.20.0
