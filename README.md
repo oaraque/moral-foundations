@@ -4,18 +4,19 @@
 **Table of Contents**
 
 - [Moral Foundations Theory predictor and lexicon](#moral-foundations-theory-predictor-and-lexicon)
-    - [NEW! Liberty lexicon 2nd version - LibertyMFD](#new-liberty-lexicon-2nd-version---libertymfd)
-    - [Liberty lexicon 1st version](#liberty-lexicon-1st-version)
-    - [Install](#install)
-    - [GUI](#gui)
+  - [NEW! - LML: Liberty Moral Lexicon](#new---lml-liberty-moral-lexicon)
+  - [Liberty lexicon 2nd version - LibertyMFD](#liberty-lexicon-2nd-version---libertymfd)
+  - [Liberty lexicon 1st version](#liberty-lexicon-1st-version)
+  - [Install](#install)
+  - [GUI](#gui)
 - [MoralStrength lexicon](#moralstrength-lexicon)
-    - [MoralStrength processed lexicon](#moralstrength-processed-lexicon)
-    - [MoralStrength presence](#moralstrength-presence)
-    - [Unsupervised prediction text using MoralStrength](#unsupervised-prediction-text-using-moralstrength)
-    - [Changing lexicon version](#changing-lexicon-version)
-    - [List of methods to use](#list-of-methods-to-use)
-    - [MoralStrength raw lexicon](#moralstrength-raw-lexicon)
-    - [MoralStrength annotation task descriptions](#moralstrength-annotation-task-descriptions)
+  - [MoralStrength processed lexicon](#moralstrength-processed-lexicon)
+  - [MoralStrength presence](#moralstrength-presence)
+  - [Unsupervised prediction text using MoralStrength](#unsupervised-prediction-text-using-moralstrength)
+  - [Changing lexicon version](#changing-lexicon-version)
+  - [List of methods to use](#list-of-methods-to-use)
+  - [MoralStrength raw lexicon](#moralstrength-raw-lexicon)
+  - [MoralStrength annotation task descriptions](#moralstrength-annotation-task-descriptions)
 
 <!-- markdown-toc end -->
 
@@ -23,9 +24,20 @@
 This repository contains code and trained models corresponding to the paper "MoralStrength: Exploiting a Moral Lexicon and Embedding Similarity for Moral Foundations Prediction".
 Run `Predictor.ipynb` to see a functioning version of the moral foundations predictor. Keep reading for some examples of use below.
 
-## NEW! Liberty lexicon 2nd version - LibertyMFD
+## NEW! - LML: Liberty Moral Lexicon
 
-On an new work, we have generated two new versions of the *Liberty/oppression* moral foundation lexicon: the _LibertyMFD_ lexicon.
+This novel lexicon expands on the lessons learned in the previous iterations.
+LML expresses the *Liberty/Oppression* moral foundation for a set of words.
+The LML lexicon is available in this repository, in the `liberty/3rd_version folder` ([link here](https://github.com/oaraque/moral-foundations/tree/master/liberty/3rd_version)).
+
+If you use this lexicon, please cite the [publication below](TODO).
+```
+Publication in process, will update when published.
+```
+
+## Liberty lexicon 2nd version - LibertyMFD
+
+We have generated two new versions of the *Liberty/oppression* moral foundation lexicon: the _LibertyMFD_ lexicon.
 The lexicons are accessible in this repository, in the `liberty/2nd_version` folder ([link here](https://github.com/oaraque/moral-foundations/tree/master/liberty/2nd_version)).
 We expect to update this lexicon soon.
 
